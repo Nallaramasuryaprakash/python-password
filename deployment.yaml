@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: passwd-gen
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pygen
+  template:
+    metadata:
+      labels:
+        app: pygen
+    spec:
+      containers:
+      - name: pygen
+        image: nallaramasuryaprakash2002/pypass:try
+        ports:
+        - containerPort: 8081
