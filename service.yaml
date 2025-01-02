@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: passwd-gen
+spec:
+  selector:
+    app: pygen  # Matches the labels in the Deployment
+  ports:
+    - protocol: TCP
+      port: 80        # External port exposed by the service
+      targetPort: 8082 # Port your app is running on
+      nodePort: 32120  # Custom NodePort (optional)
+  type: NodePort      # Exposing service using NodePort (no external load balancer)
